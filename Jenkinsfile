@@ -3,14 +3,10 @@ pipeline {
         label 'windows'
     }
 
-    tools {
-        nodejs 'NodeJS_18' // Adjust to match your Jenkins NodeJS tool name
-    }
-
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/your-username/simple-node-app.git'
+                git 'https://github.com/karthick1409/jenkins-nodejs.git'
             }
         }
 
