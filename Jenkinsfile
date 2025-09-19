@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'win-agent' } // 👈 Replace with your actual Windows agent label
+    agent { label 'windows' } // 👈 Replace with your actual Windows agent label
 
     stages {
         stage('Say Hello') {
