@@ -1,31 +1,11 @@
 pipeline {
-    agent { label 'windows' } // 👈 Change to match your Windows node label
+    agent { label 'win-agent' } // 👈 Replace with your actual Windows agent label
 
     stages {
-        stage('Preparation') {
+        stage('Say Hello') {
             steps {
-                echo '✅ Running on Windows Agent'
-                bat 'ver'            // Print Windows version
-                bat 'where node'     // Verify Node.js is installed
-                bat 'where npm'      // Verify npm is installed
-            }
-        }
-
-        stage('Install Dependencies') {
-            steps {
-                bat 'npm install'
-            }
-        }
-
-        stage('Run Tests') {
-            steps {
-                bat 'npm test'
-            }
-        }
-
-        stage('Done') {
-            steps {
-                echo '✅ Build finished on Windows node.'
+                echo 'Starting Hello World Pipeline on Windows Node...'
+                bat 'echo Hello, World!'
             }
         }
     }
