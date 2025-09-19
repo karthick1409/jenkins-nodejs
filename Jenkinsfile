@@ -1,36 +1,31 @@
 pipeline {
-    agent {
-        label 'windows'
-    }
+    agent { label 'windows' } // 👈 Change to match your Windows node label
 
     stages {
-        stage('Checkout') {
+        stage('Preparation') {
             steps {
-                git 'https://github.com/karthick1409/jenkins-nodejs.git'
+                echo '✅ Running on Windows Agent'
+                bat 'ver'            // Print Windows version
+                bat 'where node'     // Verify Node.js is installed
+                bat 'where npm'      // Verify npm is installed
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'npm test'
+                bat 'npm test'
             }
         }
 
-        stage('Build') {
+        stage('Done') {
             steps {
-                echo 'Build complete (in this case, nothing to compile)'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploy stage (could be Docker, SSH, etc.)'
+                echo '✅ Build finished on Windows node.'
             }
         }
     }
